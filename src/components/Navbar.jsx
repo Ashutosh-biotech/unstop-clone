@@ -15,13 +15,13 @@ function Navbar() {
 	const [showSearch, setShowSearch] = useState("hidden");
 
 	const search_options = [
-		["Courses", "book-blank", "purple"],
-		["Projects", "file-lines", "green"],
-		["Company Preparation", "desktop", "amber"],
-		["Skill Assessments", "file-signature", "indigo"],
-		["Mentors", "user-tie", "amber"],
-		["Opportunities", "trophy", "green"],
-		["Jobs & Internships", "briefcase", "purple"],
+		["Courses", "book-blank", "bg-purple-200"],
+		["Projects", "file-lines", "bg-green-200"],
+		["Company Preparation", "desktop", "bg-amber-200"],
+		["Skill Assessments", "file-signature", "bg-indigo-200"],
+		["Mentors", "user-tie", "bg-amber-200"],
+		["Opportunities", "trophy", "bg-green-200"],
+		["Jobs & Internships", "briefcase", "bg-purple-200"],
 	]
 
 	const [search_focus, setSearchFocus] = useState("");
@@ -49,19 +49,19 @@ function Navbar() {
 	const divider = <div className='h-8 border-l-1 border-slate-300 max-lg:hidden'></div>;
 	return (
 		<>
-			<div className={`fixed top-0 left-0 h-screen w-screen bg-slate-300 z-50 flex-wrap bg-opacity-30 mx-lg:hidden ${hidden ? "" : "hidden"}`}>
-				<div className="absolute bg-white flex flex-wrap p-5 rounded-b-2xl ml-3 z-30" style={{ left: left, top: top, width: width }}>
+			<div className={`fixed top-0 left-0 h-screen w-screen bg-slate-300 flex-wrap bg-opacity-30 mx-lg:hidden ${hidden ? "" : "hidden"}`}>
+				<div className="absolute bg-white flex flex-wrap p-5 rounded-b-2xl ml-3 z-10" style={{ left: left, top: top, width: width }}>
 					{
 						search_options.map((item) => (
 							<button className="flex justify-center items-center px-3 py-2 border-2 rounded-full m-2 text-nowrap hover:bg-gray-100" key={item[0]} type='button'>
-								<i className={`fa-regular fa-${item[1]} bg-${item[2]}-200 py-2 px-3 border-2 text-sm rounded-full mr-1`}></i>
+								<i className={`fa-regular fa-${item[1]} ${item[2]}0 py-2 px-3 border-2 text-sm rounded-full mr-1`}></i>
 								<span>{item[0]}</span>
 							</button>
 						))
 					}
 				</div>
 			</div>
-			<nav className='bg-white py-3 px-14 max-lg:px-2 flex justify-between items-center fixed top-0 left-0 right-0 text-sm h-16 border-b-1 border-slate-300'>
+			<nav className='bg-white py-3 px-14 max-lg:px-2 flex justify-between items-center fixed top-0 left-0 z-1 right-0 text-sm h-16 border-b-1 border-slate-300'>
 				<div className='flex justify-center items-center'>
 					<img src={UnstopLogo} alt="Unstop Logo" className='w-20' />
 					<div className={`search mx-2 flex items-center px-4 border-2 rounded-full py-2 ${search_focus} transition-all max-lg:hidden`} id='Search'>
@@ -80,7 +80,7 @@ function Navbar() {
 					</span>
 					<div id="sec2" className='flex items-center'>
 						<i className='fa-regular fa-magnifying-glass mr-1 text-lg lg:hidden cursor-pointer' onClick={() => setShowSearch("visible")}></i>
-						<button className='px-4 py-2 mx-2 bg-blue-500 text-white rounded-full relative overflow-hidden z-10 lg:after:absolute lg:after:-z-1 lg:after:duration-300 lg:after:w-0 lg:after:h-full lg:after:top-0 lg:after:left-0 lg:after:bg-blue-600 lg:hover:after:w-full'>Login</button>
+						<button className='px-4 py-2 mx-2 bg-blue-500 text-white rounded-full relative overflow-hidden lg:after:absolute lg:after:duration-300 lg:after:w-0 lg:after:h-full lg:after:top-0 lg:after:left-0 lg:after:bg-blue-600 lg:hover:after:w-full'>Login</button>
 					</div>
 					{divider}
 					<div id="sec3" className='flex'>
@@ -115,7 +115,7 @@ function Navbar() {
 					{
 						search_options.map((item) => (
 							<button className="flex justify-center items-center px-3 py-2 border-2 rounded-full m-2 text-nowrap hover:bg-gray-100" key={item[0]} type='button'>
-								<i className={`fa-regular fa-${item[1]} bg-${item[2]}-200 py-2 px-3 text-sm rounded-full mr-1`}></i>
+								<i className={`fa-regular fa-${item[1]} ${item[2]} py-2 px-3 text-sm rounded-full mr-1`}></i>
 								<span>{item[0]}</span>
 							</button>
 						))

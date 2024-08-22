@@ -1,17 +1,6 @@
-'use strict';
-
 import { useState, useEffect } from "react";
-import MiniImage from "../assets/img/home_page_avatar.png";
-import Diamond from "../assets/img/diamond_1.webp";
-import Frame1 from "../assets/img/frame_1.webp";
-import Frame2 from "../assets/img/Frame.webp";
-import Internship from "../assets/img/internship.webp";
-import Learn from "../assets/img/learn.webp";
-import Jobs from "../assets/img/jobs.webp";
-import Mentorship from "../assets/img/mentorship.webp";
-import Practice from "../assets/img/practice.webp";
-import Trophy from "../assets/img/trophy.webp";
-import "animate.css";
+import {MiniImage, Diamond, Frame1, Frame2, Internship, Learn, Jobs, Mentorship, Practice, Trophy} from "Assets"
+
 
 export default function Header() {
 	const names = [
@@ -35,18 +24,18 @@ export default function Header() {
 	}, []);
 
 	const cardContent = [
-		["Internship", "Gain", "Practical Experience", Internship, "green"],
-		["Learn", "Expand", "Knowledge Base", Learn, "pink"],
-		["Jobs", "Explore", "Diverse careers", Jobs, "sky"],
-		["Practice", "Refine", "SKills Daily", Practice, "green"],
-		["Compete", "Battle", "For Excellence", Trophy, "indigo"],
-		["Mentorship", "Guidance", "From Top Mentors", Mentorship, "amber"],
+		["Internship", "Gain", "Practical Experience", Internship, "bg-green-200"],
+		["Learn", "Expand", "Knowledge Base", Learn, "bg-pink-200"],
+		["Jobs", "Explore", "Diverse careers", Jobs, "bg-sky-200"],
+		["Practice", "Refine", "SKills Daily", Practice, "bg-green-200"],
+		["Compete", "Battle", "For Excellence", Trophy, "bg-indigo-200"],
+		["Mentorship", "Guidance", "From Top Mentors", Mentorship, "bg-amber-200"],
 	];
 
 	return (
-		<div className="h-screen bg-zinc-100 mt-16 overflow-hidden">
-			<div className="h-5/6 flex items-center justify-items-center px-32">
-				<div className="w-2/4">
+		<section className="text-gray-600 bg-zinc-100 body-font h-screen">
+			<div className="container mx-auto flex px-5 py-16 md:flex-row flex-col items-center">
+				<div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
 					<div className="flex items-center justify-items-center justify-between">
 						<h1 className="text-5xl font-bold">
 							<span className="text-sky-900">Unlock</span> Your Career
@@ -62,28 +51,30 @@ export default function Header() {
 						</div>
 					</button>
 				</div>
-				<div className="ml-2 w-2/3">
-					<img src={Frame1} alt="top_right" className="relative float-right w-60 -mr-20" />
-					<div className="flex items-center justify-items-center justify-center flex-wrap g-10">
-						{cardContent.map((card) => (
-							<div key={card[0]} className={`bg-${card[4]}-300 rounded-xl pt-2 flex`}>
-								<p className="pl-3">
-									<strong>{card[0]}</strong>
-									<br />
-									<span className="text-sm">
-										<strong>{card[1]}</strong>
-										<br />
-										{card[2]}
-									</span>
-								</p>
-								<img src={card[3]} alt={card[0]} className="w-40" />
+				<div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 z-0 flex flex-col md:items-start md:text-left items-center text-center">
+					<section className="text-gray-600 body-font relative">
+						<img src={Frame1} alt="Frame 1" className="absolute w-52 right-0 top-0 -mr-12" />
+						<div className="container px-5 py-24 mx-auto z-1 relative">
+							<div className="flex flex-wrap -m-4">
+								{cardContent.map((card) => (
+									<div className="p-4 lg:w-1/2" key={card[0]}>
+										<div className={`relative h-full ${ card[4] } rounded-lg flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left pt-3 overflow-hidden`}>
+											<div className="flex-grow sm:pl-2">
+												<h2 className="title-font font-medium text-lg text-gray-900">{card[0]}</h2>
+												<h3 className="text-gray-500 mb-3 text-sm">{card[1]}</h3>
+												<p className="mb-4 text-sm">{card[2]}</p>
+											</div>
+											<img alt="team" className={`relative overflow-visible bottom-0 flex-shrink-0 rounded-lg w-28 h-28 object-cover object-center ${card[0] === "Learn"? "mr-6 mb-1": card[0] === "Practice" ? "" : card[0] === "Compete" ? "mr-1"  :"mr-5"}`} src={card[3]} style={{shapeOutline: `url(${card[3]})`}} />
+										</div>
+									</div>
+								))}
 							</div>
-						))}
-					</div>
-					<img src={Frame2} alt="bottom_right" className="relative float-left w-60" />
+						</div>
+						<img src={Frame2} alt="Frame 2" className="absolute w-52 bottom-0 left-0 -ml-16 mb-12" />
+					</section>
 				</div>
 			</div>
-			<div className="h-1/6"></div>
-		</div>
+		</section>
+
 	)
 }
