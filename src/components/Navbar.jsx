@@ -1,6 +1,4 @@
 import UnstopLogo from '../assets/img/unstop-logo.svg';
-import Plus from '../assets/img/plus.svg';
-import ArrowLeft from '../assets/img/arrow-left.svg';
 import { useState } from 'react';
 
 
@@ -36,7 +34,7 @@ function Navbar() {
 	const lgSearchFocus = () => {
 		const search = document.querySelector(".search");
 		const rect = search.getBoundingClientRect();
-		setLeft(rect.left + 5);
+		setLeft(rect.left);
 		setTop(rect.top + 50);
 		setWidth(rect.width);
 		setHidden("hidden");
@@ -51,19 +49,19 @@ function Navbar() {
 	const divider = <div className='h-8 border-l-1 border-slate-300 max-lg:hidden'></div>;
 	return (
 		<>
-			<div className={`fixed top-0 left-0 h-screen w-screen bg-slate-300 flex-wrap bg-opacity-30 mx-lg:hidden ${hidden ? "" : "hidden"}`}>
-				<div className="absolute bg-white flex flex-wrap p-5 rounded-b-2xl" style={{ left: left, top: top, width: width }}>
+			<div className={`fixed top-0 left-0 h-screen w-screen bg-slate-300 z-50 flex-wrap bg-opacity-30 mx-lg:hidden ${hidden ? "" : "hidden"}`}>
+				<div className="absolute bg-white flex flex-wrap p-5 rounded-b-2xl ml-3 z-30" style={{ left: left, top: top, width: width }}>
 					{
 						search_options.map((item) => (
 							<button className="flex justify-center items-center px-3 py-2 border-2 rounded-full m-2 text-nowrap hover:bg-gray-100" key={item[0]} type='button'>
-								<i className={`fa-regular fa-${item[1]} bg-${item[2]}-200 py-2 px-3 text-sm rounded-full mr-1`}></i>
+								<i className={`fa-regular fa-${item[1]} bg-${item[2]}-200 py-2 px-3 border-2 text-sm rounded-full mr-1`}></i>
 								<span>{item[0]}</span>
 							</button>
 						))
 					}
 				</div>
 			</div>
-			<nav className='bg-white py-3 px-14 max-lg:px-2 flex justify-between items-center fixed top-0 left-0 right-0 text-sm h-16'>
+			<nav className='bg-white py-3 px-14 max-lg:px-2 flex justify-between items-center fixed top-0 left-0 right-0 text-sm h-16 border-b-1 border-slate-300'>
 				<div className='flex justify-center items-center'>
 					<img src={UnstopLogo} alt="Unstop Logo" className='w-20' />
 					<div className={`search mx-2 flex items-center px-4 border-2 rounded-full py-2 ${search_focus} transition-all max-lg:hidden`} id='Search'>
@@ -87,10 +85,10 @@ function Navbar() {
 					{divider}
 					<div id="sec3" className='flex'>
 						<button className='flex items-center lg:ml-2 lg:mr-1 max-lg:mx-1 border-1 border-blue-500 px-3 py-2 rounded-full hover:bg-stone-100 max-lg:hidden'>
-							<img src={Plus} alt="plus_icon" className='w-3' />&nbsp;Host
+							<i className="fa-regular fa-plus mr-2"></i>&nbsp;Host
 						</button>
-						<button className='flex items-center border-1 border-yellow-500 lg:px-3 py-2 lg:mr-2 lg:ml-1 max-lg:mx-1 bg-yellow-100 rounded-full lg:hover:bg-yellow-200 duration-300 business-btn max-lg:bg-transparent max-lg:border-0'>
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-5 max-lg:w-7 max-lg:duration-300 max-lg:hover:stroke-blue-500 stroke-slate-900'>
+						<button className='flex items-center border-1 border-yellow-500 lg:px-3 py-2 lg:mr-2 lg:ml-1 max-lg:mx-1 bg-amber-100 rounded-full lg:hover:bg-amber-200 duration-300 business-btn max-lg:bg-transparent max-lg:border-0'>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-5 max-lg:w-7 max-lg:duration-300 max-lg:hover:stroke-blue-500 stroke-slate-900 mr-2'>
 								<rect x="2.04761" y="5.38098" width="19.9048" height="16.619" rx="3.38095" strokeWidth="2" />
 								<rect x="8" y="1" width="8" height="4" rx="1.38" strokeWidth="2" />
 								<path
@@ -106,7 +104,7 @@ function Navbar() {
 			</nav>
 			<div className={`absolute top-0 left-0 p-7 z-50 bg-white w-screen ${showSearch}`}>
 				<div className='flex items-center gap-4 cursor-pointer mb-5' onClick={() => setShowSearch('hidden')}>
-					<img src={ArrowLeft} alt="" className='w-3' />&nbsp;Back
+					<i className="fa-regular fa-arrow-left"></i>&nbsp;Back
 				</div>
 				<div className={`flex border-2 ${search_focus} py-2 px-3 rounded-full duration-300 search-box mb-2`}>
 					<i className="fa-regular fa-magnifying-glass"></i>&nbsp;&nbsp;
